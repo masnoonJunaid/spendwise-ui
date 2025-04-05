@@ -32,10 +32,12 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+  pageLocation: string;
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -44,8 +46,8 @@ export default function RootLayout({
       >
         <StoreProviders>
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-            <div className="relative flex flex-col h-screen">
-              <Navbar />
+            <div className="relative flex flex-col min-h-screen">
+              <Navbar/>
               <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
                 {children}
               </main>
@@ -57,7 +59,7 @@ export default function RootLayout({
                   title="heroui.com homepage"
                 >
                   <span className="text-default-600">Powered by</span>
-                  <p className="text-primary">HeroUI</p>
+                  <p className="text-primary">SpendWise</p>
                 </Link>
               </footer>
             </div>
