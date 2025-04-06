@@ -9,6 +9,7 @@ import budgetReducer from './features/budgetSlice';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    categories: categoryReducer,
     budget: budgetReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
