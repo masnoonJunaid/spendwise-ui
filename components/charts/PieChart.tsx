@@ -37,7 +37,8 @@ import {
   Autocomplete,
   AutocompleteItem,
   DatePicker,
-  Textarea
+  Textarea,
+  Spinner
  } from "@heroui/react";
 import { fetchBudgetSummary, setBudget } from "@/state/features/budgetSlice";
 import { displayToast } from "@/utils/functions";
@@ -56,8 +57,6 @@ const BudgetPieChart = ({ budget, expense }: { budget: number; expense: number }
   const ref = useRef<SVGSVGElement | null>(null);
   const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
   const budgetUpdate = useSelector((state: any) => state.budget);
-
-  console.log("Budget update", budget, expense);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -130,7 +129,6 @@ const BudgetPieChart = ({ budget, expense }: { budget: number; expense: number }
   
   const handleCreateBudget = async (onClose: () => void) => {
     const userId = localStorage?.getItem('userId');
-    console.log("Month", month, "Amount", amount, "User ID", userId);
     if (!userId || !amount || !month) return;
 
     try {
@@ -141,7 +139,6 @@ const BudgetPieChart = ({ budget, expense }: { budget: number; expense: number }
       })).unwrap();
       onClose(); // Close modal on success
     } catch (err) {
-      console.log('Failed to create budget:', err);
     }
   };
 
@@ -154,19 +151,17 @@ const BudgetPieChart = ({ budget, expense }: { budget: number; expense: number }
     }
   }, [budgetUpdate?.setBudgetStatus])
   
-  
-  console.log("Add budget update", budgetUpdate);
-
+  const summaryLoading = useSelector((state: any) => state.budget?.fetchSummaryStatus);
 
 
   return (
     <div>
-       <div className="flex flex-col gap-2 items-end mr-20">
-              <Button isLoading ={budgetUpdate?.setBudgetStatus === 'loading'} onPress={() => onOpen()} className="max-w-[9rem]" size="sm" color="primary">
-                Add Budget +
-              </Button>
-              {/* <Draggable> */}
-              <Modal size="sm" isOpen={isOpen} backdrop="blur" placement="top-center" onOpenChange={onOpenChange}>
+      <div className="flex flex-col gap-2 items-end mr-20">
+        <Button isLoading ={budgetUpdate?.setBudgetStatus === 'loading'} onPress={() => onOpen()} className="max-w-[9rem]" size="sm" color="primary">
+          Add Budget +
+        </Button>
+            {/* <Draggable> */}
+        <Modal size="sm" isOpen={isOpen} backdrop="blur" placement="top-center" onOpenChange={onOpenChange}>
           <ModalContent>
             {(onClose) => (
               <>
@@ -211,15 +206,15 @@ const BudgetPieChart = ({ budget, expense }: { budget: number; expense: number }
             )}
           </ModalContent>
         </Modal>
-      {/* </Draggable> */}
-
-        </div>
+      </div>
+      { summaryLoading === 'loading' ? <Spinner/>: 
         <div className="flex flex-col items-center  p-4 rounded-xl shadow-md w-fit">
           <svg ref={ref}></svg>
           <div className="mt-4 text-sm fill-gray-800 dark:fill-gray-200">
             Budget : ₹{budget}
           </div>
         </div>
+  }
     </div>
     
   );
