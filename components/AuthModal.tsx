@@ -53,7 +53,6 @@ import { useDispatch, useSelector } from 'react-redux';
           const storedUserId = logInStatus?.user?.user?.id
           localStorage.setItem("userId", storedUserId);
           displayToast("Success!", "", "sm", "success");
-          router.refresh();
           router.push("/dashboard");
         } else if (loading === 'failed') {
           displayToast("Invalid user name or password!", "", "sm", "danger");
