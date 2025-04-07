@@ -11,14 +11,14 @@ export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
+        <span className={title()}>Take control of your &nbsp;</span>
+        <span className={title({ color: "violet" })}>budget&nbsp;</span>
         <br />
         <span className={title()}>
-          websites regardless of your design experience.
+          Spendwise makes it effortless.
         </span>
         <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
+          Organized, fast and modern  Interactive Dashboard.
         </div>
       </div>
 
@@ -30,24 +30,17 @@ export default function Home() {
             radius: "full",
             variant: "shadow",
           })}
-          href={siteConfig.links.docs}
+          href={'https://github.com/masnoonJunaid/spendwise-ui'}
         >
           Documentation
         </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
+       
       </div>
 
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="bordered">
           <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
+            Get started by Sign UP <Code color="primary">SpendWise</Code>
           </span>
         </Snippet>
       </div>
