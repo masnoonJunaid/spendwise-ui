@@ -21,7 +21,7 @@ export default function UserDropDown() {
     if(logOutStatus === 'succeeded') {
       localStorage.clear();
       router.push("/")
-      router.refresh()
+      // router.refresh()
     }
   }, [logOutStatus])
 
