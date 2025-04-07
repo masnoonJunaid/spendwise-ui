@@ -1,21 +1,25 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const url = request.nextUrl.pathname;
-  const token = request.cookies.get("access_token"); // fix typo from "acess_token" to "access_token"
+  // const url = request.nextUrl.pathname;
+  // const token = request.cookies.get("access_token");
 
-  const isAccessingDashboard = url.startsWith("/dashboard");
+  // console.log(`Request URL: ${url}`);
+  // console.log(`Access Token: ${token}`);
 
-  if (isAccessingDashboard && !token) {
-    // Not authenticated, redirect to homepage or login
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+  // const isAccessingDashboard = url.startsWith("/dashboard");
 
-  if (url === "/" && token) {
-    // Already logged in, redirect to dashboard
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
+  // if (isAccessingDashboard && !token) {
+  //   console.log("Redirecting to homepage due to missing token.");
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
 
+  // if (url === "/" && token) {
+  //   console.log("Redirecting to dashboard due to presence of token.");
+  //   return NextResponse.redirect(new URL("/dashboard", request.url));
+  // }
+
+  // console.log("Allowing request to proceed.");
   return NextResponse.next();
 }
