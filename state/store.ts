@@ -10,6 +10,7 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     categories: categoryReducer,
+    transactions: transactionsReducer,
     budget: budgetReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
