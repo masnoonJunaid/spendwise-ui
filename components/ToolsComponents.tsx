@@ -22,9 +22,6 @@ export default function ToolsComponent() {
   }, [summaryMonth, dispatch, addTransactionStatus]);
 
   const summaryData = useSelector((state: any) => state.budget.summary);
-  console.log("Budget data >>>>", summaryData?.budget, summaryData?.total_expenses);
-
-
     return (
       <div className="space-y-4">
         <BudgetPieChart budget={summaryData?.budget} expense={summaryData?.total_expenses} />

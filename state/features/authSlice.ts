@@ -25,7 +25,6 @@ export const login = createAsyncThunk(
         }
   
         const responseJson = await response.json();
-        console.log("response in slice",responseJson);
         return responseJson;
       } catch (error) {
         throw error;

@@ -64,10 +64,6 @@ export default function TransactionList() {
 
     const categoryAddStatus = useSelector((state: any) => state.categories?.addCategoryStatus);
     const categoryList  =  useSelector((state: any) => state.categories?.categories);
-    console.log("Category add status", categoryAddStatus);
-    console.log("Category data", categoryList);
-
-
     const handleCreateCategory = async (onClose: () => void) => {
       const userId = localStorage?.getItem('userId');
       if (!userId || !categoryName || !categoryType) return;
@@ -133,7 +129,6 @@ export default function TransactionList() {
     useEffect(() => {
       dispatch(fetchTransactions())
     }, [addTransactionStatus]);
-    console.log("Transaction data", amount, transactionType,"Category id>>", categoryId, date);
     const transactionList = useSelector((state: any) => state.transactions?.transactions);
     const loadTransactionStatus = useSelector((state: any) => state.transactions?.status);
 
