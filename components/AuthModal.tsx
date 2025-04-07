@@ -46,13 +46,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
     const loading = useSelector((state: any) => state.auth.status);
     const logInStatus = useSelector((state: any) => state.auth);
+    
 
     useEffect(() => {
         if (loading === 'succeeded') {
           const storedUserId = logInStatus?.user?.user?.id
           localStorage.setItem("userId", storedUserId);
           displayToast("Success!", "", "sm", "success");
-          router.push("/dashboard")
+          router.refresh();
+          router.push("/dashboard");
         } else if (loading === 'failed') {
           displayToast("Invalid user name or password!", "", "sm", "danger");
         }
