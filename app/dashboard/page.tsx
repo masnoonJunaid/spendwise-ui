@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 
-// Dynamically import components to disable server-side rendering
 const ChartComponent = dynamic(() => import("@/components/ChartComponents"), {
   ssr: false,
 });
