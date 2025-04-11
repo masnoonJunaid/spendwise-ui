@@ -1,6 +1,7 @@
 "use client";
 import { logout } from "@/state/features/authSlice";
 import { useAppDispatch } from "@/state/store";
+import { displayToast } from "@/utils/functions";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -13,16 +14,18 @@ export default function UserDropDown() {
 
   const logOutStatus = useSelector((state: any) => state?.auth?.logoutStatus);
   const handleLogout = async () => {
+    await localStorage.clear()
     dispatch(logout());
   }
 
 
   useEffect(() => {
-    if(logOutStatus === 'succeeded') {
-      localStorage.clear();
-      router.push("/")
-      // router.refresh()
-    }
+    // if(logOutStatus === 'succeeded') {
+    //   displayToast("Logged out successfully, ", "", "sm", "success");
+    //   // localStorage.clear();
+    //   // router.push("/")
+    //   // router.refresh()
+    // }
   }, [logOutStatus])
 
 
