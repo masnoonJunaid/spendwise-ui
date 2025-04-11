@@ -271,12 +271,12 @@ export default function TransactionList() {
             )}
           </ModalContent>
         </Modal>
-        <Drawer isOpen={drawer.isOpen} size="xs" onClose={ () => drawer.onClose()}>
-        <DrawerContent>
+        <Modal isOpen={drawer.isOpen} size="xs" onClose={ () => drawer.onClose()}>
+        <ModalContent>
           {() => (
             <>
-              <DrawerHeader className="flex flex-col gap-1">Drawer Title</DrawerHeader>
-              <DrawerBody>
+              <ModalHeader className="flex flex-col gap-1">Add Transaction</ModalHeader>
+              <ModalBody>
                 <Input
                   type="number"
                   label="Amount"
@@ -320,7 +320,7 @@ export default function TransactionList() {
                   placeholder="Enter your description"
                   onChange={(e) => setDescription(e.target.value)}
                 />
-              </DrawerBody>
+              </ModalBody>
               <DrawerFooter>
                 <Button color="danger" variant="light" onPress={() => drawer.onClose()}>
                   Close
@@ -335,8 +335,8 @@ export default function TransactionList() {
               </DrawerFooter>
             </>
           )}
-        </DrawerContent>
-      </Drawer>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
