@@ -95,6 +95,11 @@ SpendWise UI leverages a powerful stack of modern web development technologies:
     *   **Description:** A library for adding dark mode and theme switching to Next.js applications.
     *   **Why We Use It:** Allows users to customize the app's appearance to their preference.
     *   **Link:** [https://github.com/pacocoursey/next-themes](https://github.com/pacocoursey/next-themes)
+*   **redux-toolkit:**
+    *   **Description:** The official, opinionated, and recommended approach for writing Redux logic in JavaScript.
+    *   **Why We Use It:**  simplifies store setup, reduces boilerplate, and encourages best practices.
+    *   **Link:** [https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
+
 
 ## Project Structure
 
